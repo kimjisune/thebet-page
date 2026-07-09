@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>더벳 SEO 점검기</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 30px 15px;
+    }
+
+    .wrap {
+      max-width: 950px;
+      margin: 0 auto;
+      background: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 30px rgba(255, 180, 40, 0.18);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #ffd34d;
+      font-size: 32px;
+    }
+
+    .sub {
+      color: #ccc;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    button, a.btn {
+      border: 0;
+      background: linear-gradient(180deg, #ffcc4d, #c98a00);
+      color: #111;
+      padding: 13px 18px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    button:hover, a.btn:hover {
+      filter: brightness(1.12);
+    }
+
+    .box {
+      margin-top: 18px;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .box h2 {
+      margin: 0 0 15px;
+      font-size: 21px;
+      color: #ffe680;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 11px 0;
+      line-height: 1.5;
+    }
+
+    .row:last-child {
+      border-bottom: 0;
+    }
+
+    .label {
+      color: #ccc;
+      min-width: 180px;
+    }
+
+    .value {
+      text-align: right;
+      word-break: break-all;
+    }
+
+    .ok {
+      color: #5cff8d;
+      font-weight: 800;
+    }
+
+    .bad {
+      color: #ff6868;
+      font-weight: 800;
+    }
+
+    .warn {
+      color: #ffd34d;
+      font-weight: 800;
+    }
+
+    .keyword-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .keyword {
+      background: #191919;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .keyword strong {
+      color: #ffd34d;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-all;
+      background: #0b0b0b;
+      border: 1px solid #333;
+      padding: 14px;
+      border-radius: 8px;
+      color: #ddd;
+      max-height: 280px;
+      overflow: auto;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        padding: 22px 15px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .row {
+        flex-direction: column;
+      }
+
+      .value {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>더벳 SEO 점검기</h1>
+    <div class="sub">
+      더벳평생주소.kr의 기본 SEO 상태를 확인하는 페이지입니다.<br>
+      robots.txt, sitemap.xml, 제목, 설명, 키워드 포함 여부를 한 번에 점검합니다.
+    </div>
+
+    <div class="btns">
+      <button onclick="runCheck()">SEO 점검 시작</button>
+      <a class="btn" href="/" target="_blank">메인페이지 열기</a>
+      <a class="btn" href="/robots.txt" target="_blank">robots.txt 확인</a>
+      <a class="btn" href="/sitemap.xml" target="_blank">sitemap.xml 확인</a>
+    </div>
+
+    <div class="btns">
+      <a class="btn" href="https://www.google.com/search?q=site:%EB%8D%94%EB%B2%B3%ED%8F%89%EC%83%9D%EC%A3%BC%EC%86%8C.kr" target="_blank">구글 site 검색</a>
+      <a class="btn" href="https://search.naver.com/search.naver?query=site:%EB%8D%94%EB%B2%B3%ED%8F%89%EC%83%9D%EC%A3%BC%EC%86%8C.kr" target="_blank">네이버 site 검색</a>
+      <a class="btn" href="https://www.google.com/search?q=%EB%8D%94%EB%B2%B3%ED%8F%89%EC%83%9D%EC%A3%BC%EC%86%8C" target="_blank">구글 키워드 검색</a>
+      <a class="btn" href="https://search.naver.com/search.naver?query=%EB%8D%94%EB%B2%B3%ED%8F%89%EC%83%9D%EC%A3%BC%EC%86%8C" target="_blank">네이버 키워드 검색</a>
+    </div>
+
+    <div class="box">
+      <h2>기본 점검 결과</h2>
+      <div id="basicResult">
+        <div class="row">
+          <div class="label">상태</div>
+          <div class="value warn">아직 점검 전입니다. SEO 점검 시작 버튼을 누르세요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>키워드 포함 횟수</h2>
+      <div id="keywordResult" class="keyword-list"></div>
+    </div>
+
+    <div class="box">
+      <h2>robots.txt 내용</h2>
+      <pre id="robotsText">점검 전</pre>
+    </div>
+
+    <div class="box">
+      <h2>sitemap.xml 내용</h2>
+      <pre id="sitemapText">점검 전</pre>
+    </div>
+
+    <div class="small">
+      ※ 이 페이지는 검색 순위를 조작하는 매크로가 아니라, 정상적인 SEO 상태 확인용입니다.<br>
+      ※ 구글/네이버 검색 반영은 수집 이후 시간이 걸릴 수 있습니다.
+    </div>
+  </div>
+
+  <script>
+    const keywords = [
+      "더벳",
+      "더벳평생주소",
+      "더벳 주소",
+      "더벳주소",
+      "더벳 공식주소",
+      "더벳 최신주소",
+      "더벳 접속주소",
+      "THE BET",
+      "THEBET",
+      "스포츠 배당",
+      "최고배당",
+      "카지노",
+      "슬롯"
+    ];
+
+    function statusText(condition, good, bad) {
+      return condition
+        ? `<span class="ok">${good}</span>`
+        : `<span class="bad">${bad}</span>`;
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    async function fetchText(url) {
+      const res = await fetch(url + "?v=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) {
+        throw new Error(url + " 불러오기 실패");
+      }
+      return await res.text();
+    }
+
+    async function runCheck() {
+      const basic = document.getElementById("basicResult");
+      const keywordResult = document.getElementById("keywordResult");
+      const robotsText = document.getElementById("robotsText");
+      const sitemapText = document.getElementById("sitemapText");
+
+      basic.innerHTML = `
+        <div class="row">
+          <div class="label">상태</div>
+          <div class="value warn">점검 중...</div>
+        </div>
+      `;
+
+      keywordResult.innerHTML = "";
+      robotsText.textContent = "불러오는 중...";
+      sitemapText.textContent = "불러오는 중...";
+
+      try {
+        const [mainHtml, robots, sitemap] = await Promise.all([
+          fetchText("/"),
+          fetchText("/robots.txt"),
+          fetchText("/sitemap.xml")
+        ]);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(mainHtml, "text/html");
+
+        const title = doc.querySelector("title")?.innerText || "";
+        const description = doc.querySelector('meta[name="description"]')?.getAttribute("content") || "";
+        const metaKeywords = doc.querySelector('meta[name="keywords"]')?.getAttribute("content") || "";
+        const h1 = doc.querySelector("h1")?.innerText || "";
+        const bodyText = doc.body?.innerText || "";
+        const allText = (title + " " + description + " " + metaKeywords + " " + h1 + " " + bodyText).toLowerCase();
+
+        const hasRobotsSitemap = robots.includes("Sitemap:");
+        const hasSitemapUrl = sitemap.includes("<urlset") && sitemap.includes("<loc>");
+        const hasTitle = title.length > 0 && title.length <= 70;
+        const hasDesc = description.length >= 40 && description.length <= 160;
+        const hasH1 = h1.length > 0;
+        const hasNaver = mainHtml.includes("naver-site-verification");
+
+        basic.innerHTML = `
+          <div class="row">
+            <div class="label">페이지 제목 title</div>
+            <div class="value">${statusText(hasTitle, "정상", "확인 필요")}<br>${escapeHtml(title)}</div>
+          </div>
+          <div class="row">
+            <div class="label">description</div>
+            <div class="value">${statusText(hasDesc, "정상", "길이 확인 필요")}<br>${escapeHtml(description)}</div>
+          </div>
+          <div class="row">
+            <div class="label">keywords</div>
+            <div class="value">${metaKeywords ? "<span class='ok'>등록됨</span>" : "<span class='bad'>없음</span>"}<br>${escapeHtml(metaKeywords)}</div>
+          </div>
+          <div class="row">
+            <div class="label">H1 제목</div>
+            <div class="value">${statusText(hasH1, "정상", "없음")}<br>${escapeHtml(h1)}</div>
+          </div>
+          <div class="row">
+            <div class="label">네이버 인증태그</div>
+            <div class="value">${statusText(hasNaver, "정상", "없음")}</div>
+          </div>
+          <div class="row">
+            <div class="label">robots.txt 사이트맵 연결</div>
+            <div class="value">${statusText(hasRobotsSitemap, "정상", "Sitemap 줄 없음")}</div>
+          </div>
+          <div class="row">
+            <div class="label">sitemap.xml 구조</div>
+            <div class="value">${statusText(hasSitemapUrl, "정상", "확인 필요")}</div>
+          </div>
+        `;
+
+        keywords.forEach(keyword => {
+          const search = keyword.toLowerCase();
+          const count = allText.split(search).length - 1;
+
+          let cls = "bad";
+          let label = "부족";
+
+          if (count >= 2) {
+            cls = "ok";
+            label = "좋음";
+          } else if (count === 1) {
+            cls = "warn";
+            label = "보통";
+          }
+
+          keywordResult.innerHTML += `
+            <div class="keyword">
+              <div><strong>${keyword}</strong></div>
+              <div class="${cls}">${count}회 / ${label}</div>
+            </div>
+          `;
+        });
+
+        robotsText.textContent = robots;
+        sitemapText.textContent = sitemap;
+
+      } catch (error) {
+        basic.innerHTML = `
+          <div class="row">
+            <div class="label">오류</div>
+            <div class="value bad">${escapeHtml(error.message)}</div>
+          </div>
+        `;
+
+        robotsText.textContent = "불러오기 실패";
+        sitemapText.textContent = "불러오기 실패";
+      }
+    }
+  </script>
+</body>
+</html>
