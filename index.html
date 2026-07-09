@@ -31,27 +31,72 @@
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
+      overflow: hidden;
       background:
-        radial-gradient(circle at 15% 40%, rgba(255, 190, 40, 0.22), transparent 24%),
-        radial-gradient(circle at 85% 35%, rgba(255, 170, 20, 0.22), transparent 26%),
-        radial-gradient(circle at 50% 10%, rgba(255, 230, 120, 0.15), transparent 30%),
+        radial-gradient(circle at 15% 40%, rgba(255, 190, 40, 0.25), transparent 24%),
+        radial-gradient(circle at 85% 35%, rgba(255, 170, 20, 0.25), transparent 26%),
+        radial-gradient(circle at 50% 10%, rgba(255, 230, 120, 0.18), transparent 30%),
         linear-gradient(135deg, #2a1005 0%, #080604 48%, #2b1206 100%);
+      background-size: 160% 160%;
+      animation: bgMove 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
     }
 
     .page::before {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: -30%;
       background:
-        linear-gradient(70deg, transparent 0%, transparent 44%, rgba(255, 180, 40, 0.18) 48%, transparent 54%),
-        linear-gradient(110deg, transparent 0%, transparent 46%, rgba(255, 210, 60, 0.15) 50%, transparent 56%);
+        linear-gradient(70deg, transparent 0%, transparent 42%, rgba(255, 180, 40, 0.20) 48%, transparent 55%),
+        linear-gradient(110deg, transparent 0%, transparent 44%, rgba(255, 230, 90, 0.15) 50%, transparent 58%),
+        linear-gradient(20deg, transparent 0%, transparent 45%, rgba(255, 160, 20, 0.14) 50%, transparent 57%);
+      animation: lightSweep 6s linear infinite;
       pointer-events: none;
+    }
+
+    @keyframes lightSweep {
+      0% {
+        transform: translateX(-18%) rotate(0deg);
+      }
+      100% {
+        transform: translateX(18%) rotate(0deg);
+      }
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,207,66,0.7) 0 1px, transparent 2px);
+      background-size: 90px 90px, 140px 140px;
+      opacity: 0.22;
+      animation: sparkleMove 12s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkleMove {
+      from {
+        background-position: 0 0, 0 0;
+      }
+      to {
+        background-position: 220px 160px, -180px 220px;
+      }
     }
 
     .club-left {
       position: absolute;
-      left: -45px;
-      top: 22%;
+      left: -55px;
+      top: 34%;
       font-size: 260px;
       color: #fff;
       text-shadow:
@@ -61,15 +106,72 @@
       transform: rotate(-8deg);
       opacity: 0.95;
       z-index: 1;
+      animation: clubFloat 3.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes clubFloat {
+      0% {
+        transform: translateY(0) rotate(-8deg) scale(1);
+      }
+      100% {
+        transform: translateY(-22px) rotate(-4deg) scale(1.04);
+      }
     }
 
     .card-mark {
       position: absolute;
       right: 8%;
-      top: 58%;
-      font-size: 70px;
-      opacity: 0.25;
+      top: 68%;
+      font-size: 72px;
+      opacity: 0.28;
       transform: rotate(22deg);
+      animation: cardFly 5s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes cardFly {
+      0% {
+        transform: translateY(0) rotate(20deg);
+        opacity: 0.18;
+      }
+      100% {
+        transform: translateY(-45px) rotate(35deg);
+        opacity: 0.35;
+      }
+    }
+
+    .chip {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 8px dashed rgba(255, 212, 82, 0.8);
+      box-shadow: 0 0 25px rgba(255, 190, 40, 0.45);
+      opacity: 0.18;
+      z-index: 1;
+      animation: chipSpin 7s linear infinite;
+    }
+
+    .chip.one {
+      right: 10%;
+      top: 18%;
+    }
+
+    .chip.two {
+      left: 14%;
+      bottom: 12%;
+      width: 52px;
+      height: 52px;
+      animation-duration: 9s;
+    }
+
+    @keyframes chipSpin {
+      from {
+        transform: rotate(0deg) translateY(0);
+      }
+      to {
+        transform: rotate(360deg) translateY(-20px);
+      }
     }
 
     .wrap {
@@ -80,13 +182,27 @@
       text-align: center;
       padding: 38px 38px 55px;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.88)),
-        radial-gradient(circle at center, rgba(255, 191, 0, 0.22), transparent 52%);
-      border: 1px solid rgba(255, 193, 7, 0.25);
+        linear-gradient(180deg, rgba(0,0,0,0.62), rgba(0,0,0,0.90)),
+        radial-gradient(circle at center, rgba(255, 191, 0, 0.24), transparent 52%);
+      border: 1px solid rgba(255, 193, 7, 0.35);
       box-shadow:
-        0 0 45px rgba(255, 177, 26, 0.25),
-        inset 0 0 65px rgba(255, 180, 30, 0.08);
+        0 0 45px rgba(255, 177, 26, 0.32),
+        inset 0 0 65px rgba(255, 180, 30, 0.10);
       border-radius: 8px;
+      animation: boxGlow 2.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes boxGlow {
+      0% {
+        box-shadow:
+          0 0 35px rgba(255, 177, 26, 0.22),
+          inset 0 0 55px rgba(255, 180, 30, 0.08);
+      }
+      100% {
+        box-shadow:
+          0 0 58px rgba(255, 211, 65, 0.45),
+          inset 0 0 85px rgba(255, 180, 30, 0.14);
+      }
     }
 
     .logo {
@@ -101,6 +217,18 @@
         0 4px 0 #7a3200,
         0 7px 0 #1b1b1b,
         0 0 18px rgba(255, 170, 0, 0.6);
+      animation: logoPulse 1.9s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoPulse {
+      0% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      100% {
+        transform: scale(1.04);
+        filter: brightness(1.25);
+      }
     }
 
     .logo span {
@@ -123,6 +251,16 @@
         0 5px 0 #3b2600,
         0 8px 15px rgba(0,0,0,0.9),
         0 0 25px rgba(255, 220, 0, 0.45);
+      animation: titleShine 2.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleShine {
+      0% {
+        filter: brightness(1);
+      }
+      100% {
+        filter: brightness(1.28);
+      }
     }
 
     .desc {
@@ -145,6 +283,19 @@
       text-shadow:
         0 4px 0 #3c2500,
         0 0 14px rgba(255, 200, 70, 0.5);
+      animation: sectionGlow 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes sectionGlow {
+      0% {
+        opacity: 0.85;
+      }
+      100% {
+        opacity: 1;
+        text-shadow:
+          0 4px 0 #3c2500,
+          0 0 25px rgba(255, 220, 100, 0.8);
+      }
     }
 
     .btn-list {
@@ -162,7 +313,10 @@
       padding: 24px 20px;
       border-radius: 8px;
       border: 2px solid rgba(255, 190, 65, 0.75);
-      background: linear-gradient(180deg, #2b2b2b, #111);
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.10) 35%, transparent 55%),
+        linear-gradient(180deg, #2b2b2b, #111);
+      background-size: 220% 100%, 100% 100%;
       color: #fff;
       text-decoration: none;
       font-size: 42px;
@@ -175,10 +329,20 @@
         inset 0 0 18px rgba(255, 194, 54, 0.12),
         0 0 18px rgba(255, 178, 39, 0.25);
       transition: all 0.2s ease;
+      animation: btnShine 2.4s linear infinite;
+    }
+
+    @keyframes btnShine {
+      0% {
+        background-position: -180% 0, 0 0;
+      }
+      100% {
+        background-position: 180% 0, 0 0;
+      }
     }
 
     .domain-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.01);
       border-color: #ffe17a;
       box-shadow:
         inset 0 0 25px rgba(255, 210, 70, 0.18),
@@ -303,6 +467,8 @@
   <main class="page">
     <div class="club-left">♣</div>
     <div class="card-mark">♦</div>
+    <div class="chip one"></div>
+    <div class="chip two"></div>
 
     <section class="wrap">
       <div class="logo">
