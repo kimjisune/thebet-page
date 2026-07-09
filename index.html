@@ -8,8 +8,8 @@
   <meta name="naver-site-verification" content="8b05511feb88933b9466b6ded2d6d6ad0e7e62cd" />
 
   <title>더벳평생주소 | THE BET 공식 안내 페이지</title>
-  <meta name="description" content="더벳평생주소는 THE BET 회원님들을 위한 공식 안내 페이지입니다. 공지사항, 서버 점검, 고객센터 및 안전 이용 안내를 확인하실 수 있습니다.">
-  <meta name="keywords" content="더벳평생주소, THE BET, 더벳, 더벳주소, 더벳공지, 더벳안내">
+  <meta name="description" content="더벳평생주소는 THE BET 공식 안내 페이지입니다. 최신 접속 주소와 공지사항을 확인하실 수 있습니다.">
+  <meta name="keywords" content="더벳평생주소, 더벳주소, THE BET, 더벳, 더벳 공식주소, 더벳 평생주소">
 
   <style>
     * {
@@ -18,97 +18,277 @@
 
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, "Noto Sans KR", sans-serif;
-      background: #f4f6f8;
-      color: #222;
+      background: #120904;
+      color: #fff;
+      overflow-x: hidden;
     }
 
-    .wrap {
-      width: 100%;
+    .page {
       min-height: 100vh;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px 20px;
+      background:
+        radial-gradient(circle at 15% 40%, rgba(255, 190, 40, 0.22), transparent 24%),
+        radial-gradient(circle at 85% 35%, rgba(255, 170, 20, 0.22), transparent 26%),
+        radial-gradient(circle at 50% 10%, rgba(255, 230, 120, 0.15), transparent 30%),
+        linear-gradient(135deg, #2a1005 0%, #080604 48%, #2b1206 100%);
     }
 
-    .box {
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(70deg, transparent 0%, transparent 44%, rgba(255, 180, 40, 0.18) 48%, transparent 54%),
+        linear-gradient(110deg, transparent 0%, transparent 46%, rgba(255, 210, 60, 0.15) 50%, transparent 56%);
+      pointer-events: none;
+    }
+
+    .club-left {
+      position: absolute;
+      left: -45px;
+      top: 22%;
+      font-size: 260px;
+      color: #fff;
+      text-shadow:
+        0 0 25px rgba(255,255,255,0.7),
+        12px 14px 0 #f6a400,
+        0 0 50px rgba(255,180,40,0.55);
+      transform: rotate(-8deg);
+      opacity: 0.95;
+      z-index: 1;
+    }
+
+    .card-mark {
+      position: absolute;
+      right: 8%;
+      top: 58%;
+      font-size: 70px;
+      opacity: 0.25;
+      transform: rotate(22deg);
+    }
+
+    .wrap {
       width: 100%;
-      max-width: 760px;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 60px 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 1000px;
+      position: relative;
+      z-index: 2;
       text-align: center;
+      padding: 38px 38px 55px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.88)),
+        radial-gradient(circle at center, rgba(255, 191, 0, 0.22), transparent 52%);
+      border: 1px solid rgba(255, 193, 7, 0.25);
+      box-shadow:
+        0 0 45px rgba(255, 177, 26, 0.25),
+        inset 0 0 65px rgba(255, 180, 30, 0.08);
+      border-radius: 8px;
+    }
+
+    .logo {
+      display: inline-block;
+      margin-bottom: 22px;
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -3px;
+      color: #ffb000;
+      text-shadow:
+        0 4px 0 #7a3200,
+        0 7px 0 #1b1b1b,
+        0 0 18px rgba(255, 170, 0, 0.6);
+    }
+
+    .logo span {
+      display: block;
+      margin-top: 8px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 3px 0 #111;
     }
 
     h1 {
-      margin: 0 0 20px;
-      font-size: 34px;
-      font-weight: 800;
-      color: #111;
+      margin: 15px 0 22px;
+      font-size: 82px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: #ffe600;
+      text-shadow:
+        0 5px 0 #3b2600,
+        0 8px 15px rgba(0,0,0,0.9),
+        0 0 25px rgba(255, 220, 0, 0.45);
     }
 
-    h2 {
-      margin: 0 0 24px;
-      font-size: 22px;
-      color: #111;
+    .desc {
+      margin: 0 auto 42px;
+      max-width: 850px;
+      font-size: 30px;
+      line-height: 1.45;
+      font-weight: 900;
+      color: #fff;
+      text-shadow:
+        0 4px 0 #111,
+        0 0 12px rgba(0,0,0,0.95);
     }
 
-    p {
-      margin: 8px 0;
-      font-size: 16px;
-      line-height: 1.8;
-      color: #444;
+    .section-title {
+      margin: 0 0 22px;
+      font-size: 40px;
+      font-weight: 900;
+      color: #ffe680;
+      text-shadow:
+        0 4px 0 #3c2500,
+        0 0 14px rgba(255, 200, 70, 0.5);
+    }
+
+    .btn-list {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .domain-btn {
+      display: block;
+      width: 100%;
+      padding: 24px 20px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 190, 65, 0.75);
+      background: linear-gradient(180deg, #2b2b2b, #111);
+      color: #fff;
+      text-decoration: none;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-shadow:
+        0 4px 0 #000,
+        0 0 10px rgba(255,255,255,0.35);
+      box-shadow:
+        inset 0 0 18px rgba(255, 194, 54, 0.12),
+        0 0 18px rgba(255, 178, 39, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .domain-btn:hover {
+      transform: translateY(-2px);
+      border-color: #ffe17a;
+      box-shadow:
+        inset 0 0 25px rgba(255, 210, 70, 0.18),
+        0 0 30px rgba(255, 190, 50, 0.45);
     }
 
     .notice {
-      margin-top: 35px;
-      padding: 25px 20px;
-      background: #eef3ff;
-      border-radius: 10px;
-      text-align: left;
+      margin-top: 30px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
     }
 
-    .notice h3 {
-      margin: 0 0 18px;
-      font-size: 18px;
-      color: #1d4ed8;
+    @media (max-width: 900px) {
+      .club-left {
+        font-size: 180px;
+        left: -60px;
+        opacity: 0.45;
+      }
+
+      .wrap {
+        padding: 35px 22px 45px;
+      }
+
+      .logo {
+        font-size: 44px;
+      }
+
+      .logo span {
+        font-size: 17px;
+      }
+
+      h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      .desc {
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .domain-btn {
+        font-size: 30px;
+        padding: 20px 15px;
+      }
     }
 
-    .notice p {
-      margin: 8px 0;
-      color: #333;
-    }
+    @media (max-width: 520px) {
+      .page {
+        padding: 25px 12px;
+      }
 
-    .footer {
-      margin-top: 32px;
-      font-size: 13px;
-      color: #777;
+      .wrap {
+        padding: 30px 15px 38px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .desc {
+        font-size: 17px;
+      }
+
+      .domain-btn {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="box">
-      <h1>더벳평생주소</h1>
-      <h2>THE BET 공식 안내 페이지</h2>
+  <main class="page">
+    <div class="club-left">♣</div>
+    <div class="card-mark">♦</div>
 
-      <p>더벳평생주소는 THE BET 회원님들을 위한 공식 안내 페이지입니다.</p>
-      <p>공지사항, 서버 점검, 고객센터 및 안전 이용 안내를 확인하실 수 있습니다.</p>
+    <section class="wrap">
+      <div class="logo">
+        THEBET
+        <span>SPORTS & CASINO</span>
+      </div>
+
+      <h1>더벳평생주소.kr</h1>
+
+      <p class="desc">
+        더벳평생주소.KR만 기억하시면<br>
+        365일 24시간 언제나 접속 가능한 주소를 확인하실 수 있습니다.
+      </p>
+
+      <div class="section-title">도메인 바로가기</div>
+
+      <div class="btn-list">
+        <a class="domain-btn" href="https://tbet222.com" target="_blank" rel="noopener">
+          tbet222.com
+        </a>
+
+        <a class="domain-btn" href="https://thebet999.com" target="_blank" rel="noopener">
+          thebet999.com
+        </a>
+      </div>
 
       <div class="notice">
-        <h3>안내사항</h3>
-        <p>본 페이지에서는 THE BET 관련 최신 공지사항과 이용 안내를 제공합니다.</p>
-        <p>접속 주소 변경, 서버 점검, 고객센터 안내 등 중요한 내용은 본 페이지를 통해 확인해 주시기 바랍니다.</p>
+        본 페이지는 THE BET 공식 안내 페이지입니다.<br>
+        접속 주소 변경 및 중요 공지사항은 본 페이지를 통해 확인해주시기 바랍니다.
       </div>
-
-      <div class="footer">
-        Copyright © THE BET. All Rights Reserved.
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </body>
 </html>
